@@ -119,7 +119,6 @@ def test(imgL,imgL_aug, imgR,disp_true):
   
                 if args.cuda:
                         imgL, imgL_aug, imgR, disp_true = imgL.cuda(), imgL_aug.cuda(), imgR.cuda(), disp_true.cuda()
-                #---------
                 mask = disp_true < 192
                 #----
 

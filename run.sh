@@ -1,19 +1,8 @@
 #!/bin/bash
 
-python main.py --maxdisp 192 \
-               --model stackhourglass \
-               --datapath dataset/ \
-               --epochs 0 \
-               --loadmodel ./trained/checkpoint_10.tar \
-               --savemodel ./trained/
-
-
-
-python finetune.py --maxdisp 192 \
-                   --model stackhourglass \
-                   --datatype 2015 \
-                   --datapath dataset/data_scene_flow_2015/training/ \
-                   --epochs 300 \
-                   --loadmodel ./trained/checkpoint_10.tar \
-                   --savemodel ./trained/
-
+CUDA_VISIBLE_DEVICES=1,2,3 python3 main.py --maxdisp 256 \
+				   --rgb_datapath ../dataset/SceneFlow/ \
+				   --aug_datapath ../dataset_3DAug/SceneFlow/near_focus/3/ \
+				   --epochs 20 \
+				   --loadmodel ./aug_model_save/best_model_dof.tar \
+				   --savemodel ./aug_model_save/
